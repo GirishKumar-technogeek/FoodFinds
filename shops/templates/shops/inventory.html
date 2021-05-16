@@ -4,6 +4,94 @@
 {% endblock %}
 
 {% block main %}
+<div class="button12" style="float:right;margin-bottom:20px ;">
+    <a class="btn" href="{% url 'addProduct' %}">Add Product to Inventory</a>
+</div>
+<br><br><br><br>
+
+{% for product in products %}
+<div class="card border-left-primary shadow h-100 py-2" style="margin-bottom: 30px;">
+    <div class="card-body">
+        <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="font-size: 20px;">
+                    <strong>
+                        Product Name: {{product.product_name}}
+                    </strong></div>
+                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="font-size: 20px;">
+                        <strong>
+                            Price: {{product.price}}
+                        </strong>
+                    </div>
+                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="font-size: 20px;">
+                            <strong>
+                                Calories: {{product.calories}}
+                            </strong>
+                    </div>
+                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="font-size: 20px;">
+                                <strong>
+                                    Maximum Calories: {{product.max_calories}}
+                                </strong>
+                    </div>
+                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="font-size: 20px;">
+                                    <strong>
+                                        Minimum Calories: {{product.min_calories}}
+                                    </strong>
+                    </div>
+                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="font-size: 20px;">
+                                        <strong>
+                                            Proteins: {{product.protein}}
+                                        </strong>
+                    </div>
+                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="font-size: 20px;">
+                        <strong>
+                            Maximum Proteins: {{product.max_protein}}
+                        </strong>
+                    </div>
+                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="font-size: 20px;">
+                        <strong>
+                            Minimum Proteins: {{product.min_protein}}
+                        </strong>
+                    </div>
+                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="font-size: 20px;">
+                        <strong>
+                            Fat: {{product.fat}}
+                        </strong>
+                    </div>
+                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="font-size: 20px;">
+                        <strong>
+                            Maximum Fat: {{product.max_fat}}
+                        </strong>
+                    </div>
+                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="font-size: 20px;">
+                        <strong>
+                            Minimum Fat: {{product.min_fat}}
+                        </strong>
+                    </div>
+                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="font-size: 20px;">
+                        <strong>
+                            Carbs: {{product.carbs}}
+                        </strong>
+                    </div>
+                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="font-size: 20px;">
+                        <strong>
+                            Maximum Carbs: {{product.max_carbs}}
+                        </strong>
+                    </div>
+                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="font-size: 20px;">
+                        <strong>
+                            Minimum Carbs: {{product.min_carbs}}
+                        </strong>
+                    </div>
+                    <div class="button12" style="float:right;">
+                        <a class="btn" href="http://127.0.0.1:8000/deleteProduct/{{product.pk}}">Delete Product from Inventory</a>
+                    </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+{% endfor %}
 {% endblock %}
 
 {% block js %}

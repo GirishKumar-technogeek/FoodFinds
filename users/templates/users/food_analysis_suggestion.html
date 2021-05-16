@@ -18,7 +18,7 @@
                                 <input type="text" class="form-control form-control-user" name="product" placeholder="Get Food Suggestions..." style="background-color: white;">
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn">Get Food Suggestions</button>
+                                <button type="submit" class="btn btn-primary">Get Food Suggestions</button>
                             </div>
                         </form>
                     </div>
@@ -35,17 +35,18 @@
             <div class="col mr-2">
                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="font-size: 20px;">
                     <strong>
-                    Input File</strong>
+                    Get Food Suggestions by uploading Images</strong>
                 </div>
                     <div class="button12">
                         <form class="user" action="{% url 'food_analysis_suggestion_by_image' %}" method="POST" enctype="multipart/form-data">
                             {% csrf_token %}
                             <div class="custom-file" style="background-color: white;">
-                                <input type="file" class="custom-file-input" id="validatedCustomFile" name="food"  required >
+                                <input type="file" class="custom-file-input" id="validatedCustomFile" name="food"  required onchange="readURL(this);">
                                 <label class="custom-file-label" for="validatedCustomFile" style="background-color: white;">Choose file...</label>
+                                <img src="" alt="" style="display: none;margin-left: auto;" id="demo" />
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn">Get Food Suggestions</button>
+                                <button type="submit" class="btn btn-primary">Get Food Suggestions</button>
                             </div>
                         </form>
                     </div>
@@ -58,4 +59,21 @@
 {% endblock %}
 
 {% block js %}
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#demo')
+                    .attr('src', e.target.result)
+                    .width(75)
+                    .height(75);
+            };
+            document.getElementById('demo').style.display = 'block';
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
 {% endblock %}

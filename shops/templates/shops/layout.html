@@ -23,7 +23,6 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     {% block css %}
     {% endblock %}
-
 </head>
 
 <body id="page-top">
@@ -61,8 +60,6 @@
                     
                     <span style="color: #aa9166;">Orders</span></a>
             </li>
-            
-            <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
             <!-- Sidebar Toggler (Sidebar) -->
@@ -88,13 +85,13 @@
                     </button>
 
                     <!-- Topbar Search -->
-                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" method="POST" action="{% url 'substitute_products' %}">
+                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" action="{% url 'substitute_products' %}" method="POST">
                         {% csrf_token %}
                         <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder=" Substitute Products..."
-                                aria-label="Search" aria-describedby="basic-addon2" name="product">
+                            <input type="text" class="form-control bg-light border-0 small" name="product" placeholder=" Substitute Products..."
+                                aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
+                                <button class="btn btn-primary" type="submit">
                                     <i class="fas fa-search fa-sm"></i>
                                 </button>
                             </div>
@@ -113,14 +110,14 @@
                             <!-- Dropdown - Messages -->
                             <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
                                 aria-labelledby="searchDropdown">
-                                <form class="form-inline mr-auto w-100 navbar-search" method="POST" action="{% url 'substitute_products' %}">
+                                <form class="form-inline mr-auto w-100 navbar-search" action="{% url 'substitute_products' %}" method="POST">
                                     {% csrf_token %}
                                     <div class="input-group">
-                                        <input type="text" class="form-control bg-light border-0 small"
+                                        <input type="text" class="form-control bg-light border-0 small" name="product"
                                             placeholder="Search for..." aria-label="Search"
-                                            aria-describedby="basic-addon2" name="product">
+                                            aria-describedby="basic-addon2">
                                         <div class="input-group-append">
-                                            <button class="btn btn-primary" type="button">
+                                            <button class="btn btn-primary" type="submit">
                                                 <i class="fas fa-search fa-sm"></i>
                                             </button>
                                         </div>
@@ -128,11 +125,6 @@
                                 </form>
                             </div>
                         </li>
-
-                        <!-- Nav Item - Alerts -->
-                        
-
-                        <!-- Nav Item - Messages -->
                         
 
                         <div class="topbar-divider d-none d-sm-block"></div>
@@ -149,7 +141,7 @@
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
                                                                 
-                                <a class="dropdown-item" href="{% url 'logout' %}" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" href="{% url 'logout' %}">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
@@ -163,7 +155,6 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
                     {% block main %}
                     {% endblock %}
 
@@ -197,8 +188,9 @@
 
     <!-- Custom scripts for all pages-->
     <script src="{% static 'dashboards/js/sb-admin-2.js' %}"></script>
-    {% block js %}                    
+    {% block js %}
     {% endblock %}
+
 </body>
 
 </html>

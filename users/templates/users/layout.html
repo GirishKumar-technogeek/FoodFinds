@@ -33,7 +33,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'food_analysis_suggestion' %}">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="material-icons" style="font-size:36px">donut_small</i>
                 </div>
@@ -45,29 +45,24 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="{% url 'food_analysis_suggestion' %}">
                     
                     <span style="color: #aa9166;">Food Analysis and suggestions</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="{% url 'shops' %}">
                    
                     <span style="color: #aa9166;">Shops</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="{% url 'cart' %}">
                     
                     <span style="color: #aa9166;">Cart</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="{% url 'meal_plan' %}">
                    
                     <span style="color: #aa9166;">Get your meal plan</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="index.html">
-                    
-                    <span style="color: #aa9166;">BMI & Body Constituents based food suggestions</span></a>
             </li>
             <hr class="sidebar-divider d-none d-md-block">
 
@@ -94,12 +89,13 @@
                     </button>
 
                     <!-- Topbar Search -->
-                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" action="{% url 'food_analysis_suggestion' %}" method="POST">
+                        {% csrf_token  %}
                         <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Food Suggestions..."
+                            <input type="text" class="form-control bg-light border-0 small" placeholder="Food Suggestions..." name="product"
                                 aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
+                                <button class="btn btn-primary" type="submit">
                                     <i class="fas fa-search fa-sm"></i>
                                 </button>
                             </div>
@@ -118,13 +114,13 @@
                             <!-- Dropdown - Messages -->
                             <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
                                 aria-labelledby="searchDropdown">
-                                <form class="form-inline mr-auto w-100 navbar-search">
+                                <form class="form-inline mr-auto w-100 navbar-search"  action="{% url 'food_analysis_suggestion' %}" method="POST">
                                     <div class="input-group">
-                                        <input type="text" class="form-control bg-light border-0 small"
+                                        <input type="text" class="form-control bg-light border-0 small" name="product"
                                             placeholder="Search for..." aria-label="Search"
                                             aria-describedby="basic-addon2">
                                         <div class="input-group-append">
-                                            <button class="btn btn-primary" type="button">
+                                            <button class="btn btn-primary" type="submit">
                                                 <i class="fas fa-search fa-sm"></i>
                                             </button>
                                         </div>

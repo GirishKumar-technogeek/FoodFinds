@@ -142,13 +142,8 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'voidmain0101@gmail.com'
 EMAIL_HOST_PASSWORD = 'Voidmain101@@'
 
-AWS_ACCESS_KEY_ID = 'AKIAW7SUSPAY3YQ4ASQT'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'foodfindsvoidmain'
-AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-AWS_S3_OBJECT_PARAMETERS = {
-    'CacheControl': 'max-age=86400',
-}
+DEFAULT_FILE_STORAGE = 'foodfinds.custom_azure.AzureMediaStorage'
+MEDIA_LOCATION = "media"
 
-AWS_PRIVATE_MEDIA_LOCATION = 'media/foods'
-PRIVATE_FILE_STORAGE = 'foodfinds.storage_backends.MediaStorage'
+AZURE_ACCOUNT_NAME = "foodfinds"
+AZURE_CUSTOM_DOMAIN = f'foodfinds.blob.core.windows.net'

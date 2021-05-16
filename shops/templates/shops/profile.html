@@ -4,6 +4,27 @@
 {% endblock %}
 
 {% block main %}
+<div class="card border-left-primary shadow h-100 py-2" style="margin-bottom: 30px;">
+    <div class="card-body">
+        <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="font-size: 20px;">
+                    <strong>
+                    Shop Name: {{profile.shop_name}}</strong>
+                </div>
+                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="font-size: 20px;">
+                    <strong>
+                    Shop Description: {{profile.shop_description}}</strong>
+                </div>
+                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="font-size: 20px;">
+                    <strong>
+                    Shop Location: {{profile.shop_location}}</strong>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+</div>
 {% endblock %}
 
 {% block js %}

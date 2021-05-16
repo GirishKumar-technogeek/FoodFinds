@@ -1,0 +1,86 @@
+{% extends 'users/layout.html' %}
+
+{% block css %}
+{% endblock %}
+
+{% block main %}
+<br>
+<h6 class="m-0 font-weight-bold text-primary" style="text-align: center;">User Uploaded Image Classified as </h6>
+<br>
+<div class="card border-left-primary shadow h-100 py-2" style="margin-bottom: 30px;">
+    <div class="card-body">
+        <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+                <h1 style="color:black">Matched Product Name : {{searched_product}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<h6 class="m-0 font-weight-bold text-primary" style="text-align: center;">Foods Suggested By Nutrients</h6>
+<br>
+{% for food in suggested_by_nutrients %}
+<div class="card border-left-primary shadow h-100 py-2" style="margin-bottom: 30px;">
+    <div class="card-header py-3" style="background-color: #aa9166;">
+        <h6 class="m-0 font-weight-bold text-primary">{{food.title}}</h6>
+    </div>
+    <div class="card-body">
+        <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+                <img src="{{food.image}}" alt="Image" style="height:100px;width:100px;margin-left:auto;margin-right:auto;display:block" />
+                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="font-size: 20px;">
+                    <strong>
+                    Calories: {{food.calories}}</strong>
+                </div>
+                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="font-size: 20px;">
+                    <strong>
+                    Protein: {{food.protein}}</strong>
+                </div>
+                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="font-size: 20px;">
+                    <strong>
+                    Fat: {{food.fat}}</strong>
+                </div>
+                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="font-size: 20px;">
+                    <strong>
+                    Carbs: {{food.carbs}}</strong>
+                </div>
+                    
+            </div>
+           
+        </div>
+    </div>
+</div>
+{% endfor %}
+<br>
+<h6 class="m-0 font-weight-bold text-primary" style="text-align: center;">Similar Foods</h6>
+<br>
+{% for food in similar_foods %}
+<div class="card border-left-primary shadow h-100 py-2" style="margin-bottom: 30px;">
+    <div class="card-header py-3" style="background-color: #aa9166;">
+        <h6 class="m-0 font-weight-bold text-primary">{{food.title}}</h6>
+    </div>
+    <div class="card-body">
+        <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="font-size: 20px;">
+                    <strong>
+                    Preparation time: {{food.readyInMinutes}}</strong>
+                </div>
+                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="font-size: 20px;">
+                    <strong>
+                        Servings: {{food.servings}}</strong>
+                </div>
+                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="font-size: 20px;float:right">
+                    <strong>
+                        <a href="{{food.sourceUrl}}" target="_blank">Click here to know more about this food...</a></strong>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}
+
+{% block js %}
+{% endblock %}

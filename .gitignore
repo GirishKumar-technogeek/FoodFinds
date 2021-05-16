@@ -1,1 +1,4 @@
-static/
+static/dashboards/vendor/chart.js
+static/dashboards/vendor/datatables
+static/dashboards/vendor/fontawesome-free
+static/dashboards/scss

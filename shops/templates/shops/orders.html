@@ -4,6 +4,37 @@
 {% endblock %}
 
 {% block main %}
+{% for order in orders %}
+<div class="card border-left-primary shadow h-100 py-2" style="margin-bottom: 30px;">
+    <div class="card-body">
+        <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="font-size: 20px;">
+                    <strong>
+                        Requested from: {{order.requested_from.email}}
+                    </strong>
+                </div>
+                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="font-size: 20px;">
+                    <strong>
+                        Product: {{order.product.product_name}}
+                    </strong>
+                </div>
+                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="font-size: 20px;">
+                        <strong>
+                            Price: {{order.product.price}}
+                        </strong>
+                </div>
+                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="font-size: 20px;">
+                            <strong>
+                                Status: {{order.status}}
+                            </strong>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+</div>
+{% endfor %}
 {% endblock %}
 
 {% block js %}

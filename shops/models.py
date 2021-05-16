@@ -27,5 +27,5 @@ class Inventory_Products(models.Model):
 class Orders(models.Model):
     requested_from = models.ForeignKey(User,on_delete=models.CASCADE,related_name='from_requested')
     requested_to = models.ForeignKey(ShopOwnerProfile,on_delete=models.CASCADE,related_name='to_requested')
-    product = models.TextField()
+    product = models.ForeignKey(Inventory_Products,on_delete=models.CASCADE)
     status = models.TextField(null=True)
