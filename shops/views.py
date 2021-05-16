@@ -33,7 +33,7 @@ def addProduct(request):
     if request.method == 'POST':
         profile = ShopOwnerProfile.objects.filter(user=request.user).first()
         product = Inventory_Products(profile=profile,product_name=str(request.POST['product_name']).lower(),price=request.POST['price'])
-        url = 'https://api.spoonacular.com/recipes/guessNutrition?title='+str(product.product_name)+'&apiKey=5a9e06330e8146da874b12c8dde75226'
+        url = 'https://api.spoonacular.com/recipes/guessNutrition?title='+str(product.product_name)+'&apiKey=APIKEY'
         nutrition_response = requests.get(url).json()
         product.calories = round(float(nutrition_response['calories']['value']),2)
         product.max_calories = round(float(nutrition_response['calories']['confidenceRange95Percent']['max']),2)
@@ -67,9 +67,9 @@ def orders(request):
 @login_required
 def substitute_products(request):
     product = request.POST['product']
-    url = 'https://api.spoonacular.com/recipes/complexSearch?query='+str(product)+'&apiKey=5a9e06330e8146da874b12c8dde75226'
+    url = 'https://api.spoonacular.com/recipes/complexSearch?query='+str(product)+'&apiKey=APIKEY'
     searched_product = requests.get(url).json()['results'][0]
-    url = 'https://api.spoonacular.com/recipes/guessNutrition?title='+str(product)+'&apiKey=5a9e06330e8146da874b12c8dde75226'
+    url = 'https://api.spoonacular.com/recipes/guessNutrition?title='+str(product)+'&apiKey=APIKEY'
     nutrition_response = requests.get(url).json()
     maxcal = str(nutrition_response['calories']['confidenceRange95Percent']['max'])
     mincal = str(nutrition_response['calories']['confidenceRange95Percent']['min'])
@@ -79,9 +79,9 @@ def substitute_products(request):
     mincarbs = str(nutrition_response['carbs']['confidenceRange95Percent']['min'])
     maxprot = str(nutrition_response['protein']['confidenceRange95Percent']['max'])
     minprot = str(nutrition_response['protein']['confidenceRange95Percent']['min'])
-    url = 'https://api.spoonacular.com/recipes/findByNutrients?apiKey=5a9e06330e8146da874b12c8dde75226&minCarbs='+mincarbs+'&maxCarbs='+maxcarbs+'&maxCalories='+maxcal+'&minCalories='+mincal+'&maxProtein='+maxprot+'&minProtein='+minprot+'&maxFat='+maxfat+'&minFat='+minfat+'&number=10'
+    url = 'https://api.spoonacular.com/recipes/findByNutrients?apiKey=APIKEY&minCarbs='+mincarbs+'&maxCarbs='+maxcarbs+'&maxCalories='+maxcal+'&minCalories='+mincal+'&maxProtein='+maxprot+'&minProtein='+minprot+'&maxFat='+maxfat+'&minFat='+minfat+'&number=10'
     suggested_by_nutrients = requests.get(url).json()
-    url = 'https://api.spoonacular.com/recipes/'+str(searched_product['id'])+'/similar?apiKey=5a9e06330e8146da874b12c8dde75226'
+    url = 'https://api.spoonacular.com/recipes/'+str(searched_product['id'])+'/similar?apiKey=APIKEY'
     similar_foods = requests.get(url).json()
     context = {
         'product':product,
